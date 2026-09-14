@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio cá nhân của Nguyễn Văn A, Frontend Developer với các kỹ năng, dự án và thông tin liên hệ.">
+    <title>Nguyễn Văn A | Frontend Developer</title>
+</head>
+<body>
+    <!-- Header định danh phần đầu trang và cung cấp ngữ cảnh chính cho người dùng cũng như công cụ tìm kiếm. -->
+    <header class="site-header" id="trang-chu">
+        <!-- Nav chứa các liên kết điều hướng chính đến những khu vực quan trọng, giúp người dùng và trình đọc màn hình di chuyển dễ dàng. -->
+        <nav class="site-navigation" aria-label="Điều hướng chính">
+            <a class="site-navigation__brand" href="#trang-chu">Nguyễn Văn A</a>
+            <ul class="site-navigation__list">
+                <li class="site-navigation__item">
+                    <a class="site-navigation__link" href="#gioi-thieu">Giới thiệu</a>
+                </li>
+                <li class="site-navigation__item">
+                    <a class="site-navigation__link" href="#ky-nang">Kỹ năng</a>
+                </li>
+                <li class="site-navigation__item">
+                    <a class="site-navigation__link" href="#du-an">Dự án</a>
+                </li>
+                <li class="site-navigation__item">
+                    <a class="site-navigation__link" href="#lien-he">Liên hệ</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main bao bọc toàn bộ nội dung cốt lõi duy nhất của trang, giúp công cụ tìm kiếm và công nghệ hỗ trợ nhận diện nội dung chính. -->
+    <main class="portfolio-main">
+        <!-- Section nhóm phần giới thiệu và mục tiêu nghề nghiệp thành một chủ đề độc lập, tạo cấu trúc nội dung rõ ràng cho SEO. -->
+        <section class="hero-section" id="gioi-thieu" aria-labelledby="hero-title">
+            <p class="hero-section__eyebrow">Xin chào, tôi là</p>
+            <h1 class="hero-section__title" id="hero-title">Nguyễn Văn A</h1>
+            <p class="hero-section__role">Frontend Developer</p>
+            <p class="hero-section__description">
+                Tôi xây dựng những trải nghiệm web nhanh, dễ tiếp cận và tập trung vào nhu cầu thực tế của người dùng.
+            </p>
+            <a class="hero-section__cta" href="#du-an">Xem dự án nổi bật</a>
+        </section>
+
+        <!-- Section trình bày một nhóm chủ đề về năng lực và công nghệ, giúp nội dung dễ quét và dễ hiểu với người dùng hỗ trợ. -->
+        <section class="skills-section" id="ky-nang" aria-labelledby="skills-title">
+            <h2 class="skills-section__title" id="skills-title">Kỹ năng và công nghệ</h2>
+            <ul class="skills-section__list">
+                <li class="skills-section__item">HTML5 Semantic</li>
+                <li class="skills-section__item">CSS3 và Responsive Design</li>
+                <li class="skills-section__item">JavaScript ES6+</li>
+                <li class="skills-section__item">React.js</li>
+                <li class="skills-section__item">Git và GitHub</li>
+            </ul>
+        </section>
+
+        <!-- Section tập hợp các dự án cùng một chủ đề; cách nhóm này cung cấp ngữ nghĩa rõ ràng cho SEO và điều hướng bằng trình đọc màn hình. -->
+        <section class="projects-section" id="du-an" aria-labelledby="projects-title">
+            <h2 class="projects-section__title" id="projects-title">Dự án nổi bật</h2>
+
+            <!-- Article đại diện cho một nội dung dự án độc lập, để mỗi dự án có thể được đọc, chia sẻ và tái sử dụng riêng biệt. -->
+            <article class="project-card" id="du-an-portfolio">
+                <h3 class="project-card__title">Website Portfolio cá nhân</h3>
+                <p class="project-card__description">
+                    Website giới thiệu năng lực, kinh nghiệm và các sản phẩm đã thực hiện với giao diện responsive.
+                </p>
+                <p class="project-card__technologies">
+                    <strong>Công nghệ:</strong> HTML5, CSS3, JavaScript
+                </p>
+                <a class="project-card__link" href="#lien-he">Trao đổi về dự án</a>
+            </article>
+
+            <!-- Article thứ hai là một mục dự án độc lập, giúp cấu trúc danh sách dự án có ngữ nghĩa và dễ mở rộng. -->
+            <article class="project-card" id="du-an-task-manager">
+                <h3 class="project-card__title">Ứng dụng quản lý công việc</h3>
+                <p class="project-card__description">
+                    Ứng dụng hỗ trợ tạo, theo dõi và sắp xếp công việc theo trạng thái và mức độ ưu tiên.
+                </p>
+                <p class="project-card__technologies">
+                    <strong>Công nghệ:</strong> React.js, CSS3, REST API
+                </p>
+                <a class="project-card__link" href="#lien-he">Trao đổi về dự án</a>
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer cung cấp thông tin kết thúc trang, bản quyền, liên hệ và các kênh mạng xã hội để người dùng dễ kết nối. -->
+    <footer class="site-footer" id="lien-he">
+        <p class="site-footer__copyright">&copy; 2026 Nguyễn Văn A. Bảo lưu mọi quyền.</p>
+        <address class="site-footer__contact">
+            Email: <a class="site-footer__contact-link" href="mailto:hello@example.com">hello@example.com</a>
+        </address>
+        <ul class="site-footer__social-list" aria-label="Liên kết mạng xã hội">
+            <li class="site-footer__social-item">
+                <a class="site-footer__social-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </li>
+            <li class="site-footer__social-item">
+                <a class="site-footer__social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
