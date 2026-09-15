@@ -1,0 +1,150 @@
+/* Reset & Box Model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 6. box-sizing: border-box giúp padding không đẩy vỡ bố cục */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* --- BỐ CỤC TỔNG THỂ (CSS GRID) --- */
+.grid-container {
+    display: grid;
+    /* 1. Sử dụng grid-template-areas để ánh xạ bố cục */
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    /* 2. Chia kích thước cột: Sidebar 25%, Main Content 1fr (phần còn lại) */
+    grid-template-columns: 25% 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* Header (Chiếm toàn bộ chiều ngang) */
+.header {
+    grid-area: header;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Sidebar (Nằm bên trái) */
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ecf0f1;
+    padding: 40px 20px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.avatar {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.sidebar h2 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.sidebar p {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* Main Content (Nằm bên phải) */
+.main-content {
+    grid-area: main;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    color: #2980b9;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+/* --- KHU VỰC SKILLS (FLEXBOX) --- */
+.skills-container {
+    /* 3. Khởi tạo Flexbox */
+    display: flex;
+    /* 4. flex-wrap: wrap giúp các thẻ xuống dòng tự động */
+    flex-wrap: wrap;       
+    /* 5. gap: 15px đặt khoảng cách đều đặn 15px giữa các item */
+    gap: 15px;             
+    justify-content: center; /* Căn giữa các thẻ kỹ năng */
+}
+
+.skill-tag {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Footer (Nằm dưới cùng, chiếm toàn bộ chiều ngang) */
+.footer {
+    grid-area: footer;
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- RESPONSIVE CHO MÀN HÌNH NHỎ --- */
+@media (max-width: 768px) {
+    .grid-container {
+        /* Chuyển thành bố cục 1 cột */
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+    
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+}
