@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* Bố cục lưới 3 cột bằng nhau, khoảng cách 20px */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1050px;
+  width: 100%;
+}
+
+/* Thẻ cơ bản: màu nền xám nhạt, bo góc 10px */
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;        /* Bo góc 10px */
+  padding: 30px 24px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Bóng mờ ban đầu */
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Khung chứa Icon */
+.icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.35s ease;
+}
+
+.icon-box svg {
+  width: 26px;
+  height: 26px;
+}
+
+.card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 10px;
+  transition: color 0.35s ease;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #64748b;
+  transition: color 0.35s ease;
+}
+
+/* ================= HIỆU ỨNG KHI DI CHUỘT (HOVER) ================= */
+
+/* Thay đổi chữ và icon khi hover */
+.card:hover h3 {
+  color: #ffffff;
+}
+
+.card:hover p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.card:hover .icon-box {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: scale(1.1) rotate(6deg);
+}
+
+/* Thẻ 1: Xanh Dương (Indigo) */
+.card-1 .icon-box {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+.card-1:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+  box-shadow: 0 16px 28px rgba(79, 70, 229, 0.35);
+  transform: translateY(-8px);
+  border-color: transparent;
+}
+
+/* Thẻ 2: Xanh Ngọc (Emerald) */
+.card-2 .icon-box {
+  background-color: #d1fae5;
+  color: #047857;
+}
+.card-2:hover {
+  background: linear-gradient(135deg, #10b981 0%, #065f46 100%);
+  box-shadow: 0 16px 28px rgba(16, 185, 129, 0.35);
+  transform: translateY(-8px);
+  border-color: transparent;
+}
+
+/* Thẻ 3: Tím Hồng (Fuchsia/Rose) */
+.card-3 .icon-box {
+  background-color: #fae8ff;
+  color: #a21caf;
+}
+.card-3:hover {
+  background: linear-gradient(135deg, #d946ef 0%, #86198f 100%);
+  box-shadow: 0 16px 28px rgba(217, 70, 239, 0.35);
+  transform: translateY(-8px);
+  border-color: transparent;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
