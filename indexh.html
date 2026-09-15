@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Portfolio cá nhân của hieu, Front-end Developer chuyên xây dựng trải nghiệm web nhanh, dễ dùng và giàu tính thẩm mỹ.">
+	<title>Hieudz | Front-end Developer</title>
+	<!-- Favicon dạng placeholder giúp trình duyệt có biểu tượng nhận diện trang. -->
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>MA</text></svg>">
+</head>
+<body>
+	<!--
+		HEADER là phần đầu trang, thường chứa nhận diện và điều hướng chính.
+		Về SEO, nó giúp công cụ tìm kiếm nhận ra phần thông tin mở đầu của website.
+		Về Accessibility, landmark "banner" giúp người dùng trình đọc màn hình đi nhanh
+		tới đầu trang và tìm được thương hiệu một cách nhất quán.
+	-->
+	<header class="site-header" id="top">
+		<!--
+			NAV là vùng chứa các liên kết điều hướng quan trọng của toàn trang.
+			Các anchor link trỏ tới id của section giúp người dùng bàn phím và trình đọc
+			màn hình di chuyển nhanh giữa các nội dung mà không cần cuộn thủ công.
+		-->
+		<nav class="navigation" aria-label="Điều hướng chính">
+			<a class="logo" href="#top" aria-label="Về đầu trang, hieu">Hieu</a>
+			<ul class="nav-links">
+				<li><a href="#gioi-thieu">Giới thiệu</a></li>
+				<li><a href="#du-an">Dự án</a></li>
+				<li><a href="#ky-nang">Kỹ năng</a></li>
+				<li><a href="#lien-he">Liên hệ</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- MAIN là nội dung chính duy nhất của tài liệu, giúp SEO phân biệt nội dung cốt lõi
+		 với phần điều hướng và thông tin lặp lại. Landmark này cũng giúp người dùng dùng
+		 trình đọc màn hình bỏ qua các thành phần phụ để đến thẳng nội dung. -->
+	<main>
+		<!--
+			SECTION giới thiệu nhóm nội dung có chủ đề "Giới thiệu bản thân".
+			Tiêu đề h1 là tiêu đề quan trọng nhất của trang, hỗ trợ SEO hiểu chủ thể
+			của portfolio. Nội dung ngắn gọn và CTA có văn bản rõ ràng giúp Accessibility.
+		-->
+		<section class="hero" id="gioi-thieu" aria-labelledby="tieu-de-chinh">
+			<div class="hero-content">
+				<p class="eyebrow">Xin chào, mình là</p>
+				<h1 id="tieu-de-chinh">Hieu, người biến ý tưởng thành trải nghiệm số.</h1>
+				<p>Front-end Developer tập trung vào những sản phẩm web nhanh, dễ tiếp cận và có giao diện đủ tinh tế để người dùng muốn quay lại.</p>
+				<a class="button" href="#lien-he">Cùng bắt đầu một dự án</a>
+			</div>
+		</section>
+
+		<!--
+			SECTION dự án là nhóm nội dung portfolio có cùng chủ đề.
+			Cấu trúc heading h2 giúp SEO tạo ra phân cấp nội dung rõ ràng sau h1.
+			Mỗi ARTICLE là một nội dung độc lập, vì vậy công cụ tìm kiếm và trình đọc
+			màn hình có thể nhận diện từng dự án như một đơn vị riêng biệt.
+		-->
+		<section class="section projects" id="du-an" aria-labelledby="tieu-de-du-an">
+			<div class="section-inner">
+				<header class="section-heading">
+					<p class="eyebrow">Selected work</p>
+					<h2 id="tieu-de-du-an">Một vài dự án nổi bật</h2>
+					<p>Từ hệ thống bán hàng đến sản phẩm giáo dục, mình luôn bắt đầu bằng việc lắng nghe người dùng và kết thúc bằng một trải nghiệm dễ nhớ.</p>
+				</header>
+				<div class="project-grid">
+					<!-- ARTICLE đại diện cho một dự án độc lập và có thể được chia sẻ riêng. -->
+					<article class="project-card">
+						<div class="project-content">
+							<h3>Hạt &amp; Mầm</h3>
+							<p>Thiết kế lại trải nghiệm mua sắm thực phẩm hữu cơ, tăng tỷ lệ hoàn tất đơn hàng và giảm thao tác thừa.</p>
+							<ul class="tags" aria-label="Công nghệ sử dụng">
+								<li>React</li><li>TypeScript</li><li>Figma</li>
+							</ul>
+							<div class="project-links"><a href="https://example.com" target="_blank" rel="noopener noreferrer">Xem demo</a><a href="https://github.com" target="_blank" rel="noopener noreferrer">Source code</a></div>
+						</div>
+					</article>
+
+					<article class="project-card">
+						<div class="project-content">
+							<h3>Northstar Analytics</h3>
+							<p>Bảng điều khiển dữ liệu giúp đội ngũ marketing đọc nhanh các chỉ số và đưa ra quyết định theo thời gian thực.</p>
+							<ul class="tags" aria-label="Công nghệ sử dụng"><li>Next.js</li><li>CSS</li><li>Chart.js</li></ul>
+							<div class="project-links"><a href="https://example.com" target="_blank" rel="noopener noreferrer">Xem demo</a><a href="https://github.com" target="_blank" rel="noopener noreferrer">Source code</a></div>
+						</div>
+					</article>
+
+					<article class="project-card">
+						<div class="project-content">
+							<h3>Lớp học mở</h3>
+							<p>Nền tảng học tập cộng đồng với lộ trình rõ ràng, giúp người mới dễ tìm khóa học phù hợp và duy trì động lực.</p>
+							<ul class="tags" aria-label="Công nghệ sử dụng"><li>Vue</li><li>Node.js</li><li>MongoDB</li></ul>
+							<div class="project-links"><a href="https://example.com" target="_blank" rel="noopener noreferrer">Xem demo</a><a href="https://github.com" target="_blank" rel="noopener noreferrer">Source code</a></div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!--
+			SECTION kỹ năng trình bày năng lực chuyên môn theo một chủ đề riêng.
+			Heading h2 tạo cấu trúc SEO dễ đọc; danh sách UL là lựa chọn semantic phù hợp
+			vì mỗi kỹ năng là một mục ngang hàng. Văn bản thật thay cho biểu đồ trang trí
+			giúp người dùng trình đọc màn hình tiếp nhận đầy đủ thông tin.
+		-->
+		<section class="section" id="ky-nang" aria-labelledby="tieu-de-ky-nang">
+			<div class="section-inner about-layout">
+				<header class="section-heading">
+					<p class="eyebrow">My toolkit</p>
+					<h2 id="tieu-de-ky-nang">Kỹ năng mình tin dùng</h2>
+					<p>Mình kết hợp tư duy sản phẩm, thiết kế trực quan và kỹ thuật front-end để tạo ra những sản phẩm vừa đẹp vừa có ích.</p>
+				</header>
+				<ul class="skill-list">
+					<li>HTML5 Semantic &amp; Accessibility</li>
+					<li>CSS, Responsive Design</li>
+					<li>JavaScript &amp; TypeScript</li>
+					<li>React, Next.js, Vue</li>
+					<li>Design system &amp; Figma</li>
+					<li>Testing &amp; tối ưu hiệu năng</li>
+				</ul>
+			</div>
+		</section>
+
+		<!--
+			SECTION liên hệ là điểm kết thúc nội dung chính và chứa lời mời hành động.
+			aria-labelledby liên kết section với tiêu đề, giúp trình đọc màn hình công bố
+			đúng ngữ cảnh. Các liên kết có nhãn cụ thể để người dùng biết chính xác đích đến.
+		-->
+		<section class="section contact" id="lien-he" aria-labelledby="tieu-de-lien-he">
+			<div class="section-inner">
+				<header class="section-heading">
+					<p class="eyebrow">Let's talk</p>
+					<h2 id="tieu-de-lien-he">Bạn có một ý tưởng thú vị?</h2>
+					<p class="contact-copy">Mình luôn sẵn sàng nghe về sản phẩm tiếp theo của bạn. Hãy gửi email hoặc kết nối qua mạng xã hội.</p>
+				</header>
+				<div class="contact-links">
+					<a href="mailto:thanhtruc@example.com">thanhtruc@example.com</a>
+					<a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+					<a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!--
+		FOOTER là phần chân trang chứa thông tin bản quyền và các liên kết phụ.
+		Landmark này giúp SEO hiểu đâu là thông tin kết thúc website; liên kết "Về đầu
+		trang" có nhãn rõ ràng, hỗ trợ người dùng bàn phím quay lại điều hướng nhanh.
+	-->
+	<footer class="site-footer">
+		<div class="footer-inner">
+			<p>&copy; 2026 Hieu. Thiết kế và xây dựng bằng sự tò mò.</p>
+			<nav class="footer-links" aria-label="Liên kết chân trang">
+				<a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+				<a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+				<a href="#top">Về đầu trang &uarr;</a>
+			</nav>
+		</div>
+	</footer>
+</body>
+</html>
