@@ -1,0 +1,73 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Màu nền ngoài: Dải màu gradient (tím/xanh) siêu hiện đại */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 850px;
+  
+  /* Thêm một lớp nền mờ ảo (Glassmorphism) bao quanh các cột */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px); /* Làm mờ phần nền phía sau */
+  -webkit-backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 30px;
+  
+  /* Màu nền trong các cột: Trắng sữa kết hợp độ trong suốt */
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  
+  color: #2d3748;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  
+  /* Hiệu ứng chuyển động nảy nhẹ (cubic-bezier) */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill-item i {
+  font-size: 24px;
+  /* Icon được phủ màu gradient đồng bộ với nền ngoài */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi rê chuột (Hover) */
+.skill-item:hover {
+  background-color: #ffffff; /* Trắng sáng hoàn toàn khi hover */
+  transform: translateY(-8px) scale(1.05); /* Bay bổng lên và to ra 1 chút */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  border-color: #ffffff;
+}
+
+.skill-item:hover i {
+  transform: scale(1.15); /* Icon to lên khi hover */
+}
