@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100dvh;        /* Chiều cao màn hình thích ứng hiện đại */
+  display: grid;
+  place-items: center;       /* Căn chính giữa cả 2 trục ngang và dọc */
+  padding: 24px;             /* Đệm an toàn khi thu nhỏ cửa sổ */
+  /* Nền tối sâu hiện đại kết hợp ánh sáng tỏa (ambient aura) nền */
+  background-color: #080c14;
+  background-image: 
+    radial-gradient(circle at 50% 40%, rgba(99, 102, 241, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+/* Khung chứa CSS Grid co giãn tự động */
+.grid-container {
+  display: grid;
+  /* 3 cột tự co giãn đều nhau; minmax(0, 1fr) ngăn tràn chữ */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;                 /* Sử dụng gap hiện đại thay vì margin */
+  width: 100%;               /* Co giãn linh hoạt theo kích thước trình duyệt */
+  max-width: 1050px;         /* Giới hạn độ rộng tối đa */
+}
+
+/* 
+  Hiệu ứng Hào quang (Aura Glow) hiện đại cho từng Card
+  Sử dụng pseudo-element ::before với filter: blur() và linear-gradient
+*/
+.card {
+  position: relative;        /* Định vị cho lớp hào quang bên dưới */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;                 /* Dùng gap phân tách tiêu đề và nội dung */
+  background: rgba(15, 23, 42, 0.85); /* Nền tối mờ dạng kính (Glassmorphism) */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;       /* Bo góc 10px theo yêu cầu */
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  z-index: 1;
+}
+
+/* Lớp hào quang phát sáng (Aura Glow Layer) */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;               /* Lan nhẹ ra ngoài viền */
+  border-radius: 12px;       /* Tương ứng bo góc để viền hào quang mượt */
+  background: linear-gradient(135deg, var(--aura-start, #6366f1), var(--aura-end, #ec4899));
+  filter: blur(16px);        /* Độ nhòe tạo hiệu ứng hào quang tỏa sáng */
+  opacity: 0.45;             /* Độ mờ mặc định */
+  z-index: -1;               /* Nằm sau nội dung thẻ */
+  transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+  animation: aura-pulse 4s ease-in-out infinite alternate;
+}
+
+/* Hiệu ứng khi hover: Hào quang sáng bừng và nổi khối */
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.card:hover::before {
+  opacity: 0.85;
+  filter: blur(22px);
+  transform: scale(1.02);
+}
+
+/* Bộ màu hào quang hiện đại riêng biệt cho từng thẻ */
+/* Thẻ 1: Neon Cyan & Electric Blue */
+.card:nth-child(1) {
+  --aura-start: #00f2fe;
+  --aura-end: #4facfe;
+}
+
+/* Thẻ 2: Cyber Violet & Neon Pink */
+.card:nth-child(2) {
+  --aura-start: #a855f7;
+  --aura-end: #ec4899;
+}
+
+/* Thẻ 3: Sunset Amber & Coral Flame */
+.card:nth-child(3) {
+  --aura-start: #f43f5e;
+  --aura-end: #fb923c;
+}
+
+/* Định kiểu chữ bên trong thẻ */
+.card h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Nhịp thở nhẹ nhàng cho hào quang (Subtle breathing pulse) */
+@keyframes aura-pulse {
+  0% {
+    opacity: 0.35;
+    filter: blur(14px);
+  }
+  100% {
+    opacity: 0.6;
+    filter: blur(18px);
+  }
+}
+
+/* Responsive: chuyển thành 1 cột trên màn hình điện thoại */
+@media (max-width: 680px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
