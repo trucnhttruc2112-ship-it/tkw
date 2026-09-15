@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bài 2 - Yêu cầu 1: Bố cục tổng thể CSS Grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bt2yc1style.css" />
+</head>
+<body>
+  <div class="grid-container">
+    <header class="header">
+      <h2>Header (Toàn bộ chiều ngang)</h2>
+    </header>
+
+    <aside class="sidebar">
+      <h3>Sidebar (250px)</h3>
+      <nav>
+        <ul>
+          <li><a href="#">Bảng điều khiển</a></li>
+          <li><a href="#">Dự án</a></li>
+          <li><a href="#">Báo cáo</a></li>
+          <li><a href="#">Cài đặt</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h2>Main Content (Chiếm phần còn lại)</h2>
+      <p>Khu vực nội dung chính tự động co giãn linh hoạt theo kích thước màn hình (1fr).</p>
+      <p>Bố cục được quản lý hoàn toàn bằng <code>grid-template-areas</code> một cách trực quan, mạch lạc.</p>
+    </main>
+
+    <footer class="footer">
+      <p>Footer (Toàn bộ chiều ngang)</p>
+    </footer>
+  </div>
+</body>
+</html>

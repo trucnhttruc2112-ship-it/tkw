@@ -1,0 +1,212 @@
+/* ==========================================================
+   Bài 2 - Yêu cầu 2: Danh mục 'Skills' trên khung sườn Grid
+   Kết hợp CSS Grid (Layout tổng) + Flexbox (Danh mục Skills)
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0b0f19;
+  --bg-card: rgba(17, 24, 39, 0.75);
+  --border-card: rgba(255, 255, 255, 0.08);
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --glow-cyan: #38bdf8;
+  --glow-purple: #a855f7;
+  --glow-blue: #6366f1;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-main);
+  background: radial-gradient(circle at 15% 15%, #1e1b4b 0%, #0f172a 45%, #030712 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================
+   PHẦN 1: KHUNG SƯỜN CSS GRID (TỪ BÀI TẬP 2 YÊU CẦU 1)
+   ========================================================== */
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 250px 1fr;      /* Sidebar 250px, Main chiếm phần còn lại */
+  grid-template-rows: auto 1fr auto;      /* Header tự động, Main dãn hết cỡ, Footer ở đáy */
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Định dạng các ô chính và ánh hào quang khi rê chuột */
+.header,
+.sidebar,
+.main-content,
+.footer {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.header:hover,
+.sidebar:hover,
+.main-content:hover,
+.footer:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 
+    0 0 20px rgba(99, 102, 241, 0.3),
+    0 0 45px rgba(56, 189, 248, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Header */
+.header {
+  grid-area: header;
+  padding: 22px 28px;
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.7), rgba(17, 24, 39, 0.8));
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sidebar */
+.sidebar {
+  grid-area: sidebar;
+  padding: 24px;
+}
+
+.sidebar h3 {
+  font-size: 1.1rem;
+  color: var(--glow-cyan);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--text-muted);
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.sidebar a:hover {
+  color: #ffffff;
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+  transform: translateX(6px);
+}
+
+/* Main Content */
+.main-content {
+  grid-area: main;
+  padding: 30px;
+}
+
+.main-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.main-content p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* Footer */
+.footer {
+  grid-area: footer;
+  padding: 18px 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================
+   PHẦN 2: DANH MỤC 'SKILLS' SỬ DỤNG FLEXBOX (YÊU CẦU 2)
+   ========================================================== */
+.skills-section {
+  margin-top: 10px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.skills-title {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Container Flexbox cho Skills */
+.skills-container {
+  display: flex;             /* 1. Kích hoạt Flexbox */
+  flex-direction: row;       /* 2. Hiển thị dạng hàng ngang */
+  flex-wrap: wrap;           /* 3. Tự động xuống dòng khi thiếu chỗ */
+  gap: 15px;                 /* 4. Khoảng cách giữa các item là 15px */
+  justify-content: center;   /* 5. Căn giữa các item */
+  align-items: center;
+}
+
+/* Từng ô kỹ năng với hiệu ứng ánh hào quang (Aura Glow) khi hover */
+.skill-item {
+  background: rgba(30, 41, 59, 0.7);
+  color: #cbd5e1;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-item:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(168, 85, 247, 0.25));
+  border-color: var(--glow-cyan);
+  transform: translateY(-4px) scale(1.06);
+  /* Ánh hào quang tỏa sáng 3 lớp kết hợp phát sáng bên trong */
+  box-shadow: 
+    0 0 15px rgba(56, 189, 248, 0.7),
+    0 0 30px rgba(168, 85, 247, 0.45),
+    0 0 50px rgba(56, 189, 248, 0.25),
+    inset 0 0 12px rgba(56, 189, 248, 0.35);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}

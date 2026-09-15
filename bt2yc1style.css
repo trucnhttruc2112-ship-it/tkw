@@ -1,0 +1,164 @@
+/* ==========================================================
+   Bài 2 - Yêu cầu 1: Bố cục tổng thể CSS Grid
+   Phong cách Modern Dark Glassmorphism & Aura Glow
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0b0f19;
+  --bg-card: rgba(17, 24, 39, 0.75);
+  --border-card: rgba(255, 255, 255, 0.08);
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --glow-cyan: #38bdf8;
+  --glow-purple: #a855f7;
+  --glow-blue: #6366f1;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-main);
+  background: radial-gradient(circle at 15% 15%, #1e1b4b 0%, #0f172a 45%, #030712 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 1. Khung chứa Grid layout */
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 250px 1fr;      /* Sidebar 250px, Main chiếm phần còn lại (1fr) */
+  grid-template-rows: auto 1fr auto;      /* Header co giãn theo nội dung, Main tự bung, Footer ở đáy */
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 20px;
+  padding: 20px;
+}
+
+/* 2. Hiệu ứng kính mờ (Glassmorphism) & Ánh hào quang khi hover */
+.header,
+.sidebar,
+.main-content,
+.footer {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Ánh hào quang (Aura Glow) khi di chuột vào từng ô */
+.header:hover,
+.sidebar:hover,
+.main-content:hover,
+.footer:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 
+    0 0 20px rgba(99, 102, 241, 0.3),
+    0 0 45px rgba(56, 189, 248, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Header */
+.header {
+  grid-area: header;                      /* Chiếm toàn bộ chiều ngang */
+  padding: 22px 28px;
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.7), rgba(17, 24, 39, 0.8));
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sidebar */
+.sidebar {
+  grid-area: sidebar;                     /* Nằm bên dưới Header, rộng đúng 250px */
+  padding: 24px;
+}
+
+.sidebar h3 {
+  font-size: 1.1rem;
+  color: var(--glow-cyan);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--text-muted);
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.sidebar a:hover {
+  color: #ffffff;
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+  transform: translateX(6px);
+}
+
+/* Main Content */
+.main-content {
+  grid-area: main;                        /* Nằm cạnh Sidebar, chiếm phần còn lại (1fr) */
+  padding: 30px;
+}
+
+.main-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.main-content p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.main-content code {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--glow-cyan);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* Footer */
+.footer {
+  grid-area: footer;                      /* Cuối cùng, chiếm toàn bộ chiều ngang */
+  padding: 18px 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}

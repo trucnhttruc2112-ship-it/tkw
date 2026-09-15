@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bài 2 - Yêu cầu 2: Danh mục Skills trên khung sườn Grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bt2yc2style.css" />
+</head>
+<body>
+  <!-- Khung sườn layout CSS Grid của Bài 2 Yêu cầu 1 -->
+  <div class="grid-container">
+    <header class="header">
+      <h2>Header (Toàn bộ chiều ngang)</h2>
+    </header>
+
+    <aside class="sidebar">
+      <h3>Sidebar (250px)</h3>
+      <nav>
+        <ul>
+          <li><a href="#">Bảng điều khiển</a></li>
+          <li><a href="#">Dự án</a></li>
+          <li><a href="#">Kỹ năng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h2>Main Content (Chiếm phần còn lại)</h2>
+      <p>Khu vực nội dung chính co giãn linh hoạt theo kích thước màn hình (1fr).</p>
+
+      <!-- Yêu cầu 2: Danh mục 'Skills' sử dụng Flexbox -->
+      <section class="skills-section">
+        <h3 class="skills-title">Danh mục Kỹ năng (Skills)</h3>
+        <div class="skills-container">
+          <div class="skill-item">HTML5</div>
+          <div class="skill-item">CSS3 / Flexbox</div>
+          <div class="skill-item">CSS Grid</div>
+          <div class="skill-item">JavaScript</div>
+          <div class="skill-item">TypeScript</div>
+          <div class="skill-item">React</div>
+          <div class="skill-item">Node.js</div>
+          <div class="skill-item">Git & GitHub</div>
+          <div class="skill-item">Responsive Design</div>
+          <div class="skill-item">UI/UX Design</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Footer (Toàn bộ chiều ngang)</p>
+    </footer>
+  </div>
+</body>
+</html>
