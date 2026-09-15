@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio cá nhân</title>
+    <style>
+        /* Thiết lập cơ bản cho toàn bộ trang */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f9fbfd;
+        }
+
+        /* Định dạng Header và Navigation */
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Định dạng Main và các Section */
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: #ffffff;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: #1e293b;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Định dạng thẻ Article trong phần Dự án */
+        article {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            background-color: #f8fafc;
+        }
+
+        article p strong {
+            color: #0f172a;
+        }
+
+        /* Định dạng phần Liên hệ */
+        address {
+            font-style: normal;
+        }
+
+        address a {
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        address a:hover {
+            text-decoration: underline;
+        }
+
+        /* Định dạng Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================================================= -->
+    <!-- THẺ <header>:                                                             -->
+    <!-- Đại diện cho phần đầu trang web.                                          -->
+    <!-- Chức năng: Chứa tiêu đề/logo nhận diện cá nhân và khu vực điều hướng chính.-->
+    <!-- ========================================================================= -->
+    <header id="header">
+        <!-- Tên hoặc Logo thương hiệu cá nhân -->
+        <h1>Cao Quốc Cường
+
+        <!-- ===================================================================== -->
+        <!-- THẺ <nav>:                                                            -->
+        <!-- Đại diện cho khối điều hướng của trang (Navigation).                  -->
+        <!-- Chức năng: Chứa các liên kết giúp người dùng điều hướng nhanh đến      -->
+        <!-- các phần nội dung chính trên trang web.                               -->
+        <!-- ===================================================================== -->
+        <nav aria-label="Điều hướng chính">
+            <ul>
+                <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#ky-nang">Kỹ năng</a></li>
+                <li><a href="#du-an">Dự án</a></li>
+                <li><a href="#lien-he">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- THẺ <main>:                                                               -->
+    <!-- Đại diện cho phần nội dung chính, quan trọng nhất của trang.              -->
+    <!-- Chức năng: Chứa các thông tin cốt lõi, duy nhất của tài liệu HTML.       -->
+    <!-- Lưu ý: Một trang web chỉ có 1 thẻ <main>, không chứa nội dung lặp lại     -->
+    <!-- như header hay footer.                                                    -->
+    <!-- ========================================================================= -->
+    <main>
+
+        <!-- ===================================================================== -->
+        <!-- THẺ <section>:                                                        -->
+        <!-- Đại diện cho một phân đoạn nội dung độc lập theo một chủ đề cụ thể.   -->
+        <!-- Chức năng: Nhóm các nội dung liên quan và luôn đi kèm tiêu đề (h2-h6).-->
+        <!-- ===================================================================== -->
+
+        <!-- Section 1: Giới thiệu bản thân và định hướng nghề nghiệp -->
+        <section id="gioi-thieu">
+            <h2>Giới thiệu bản thân</h2>
+            <p><strong>Họ và tên:</strong> Cao Quốc Cường</p>
+            <p><strong>Ngành học:</strong> Kỹ thuật Phần mềm - Khoa Công nghệ Thông tin</p>
+            <p><strong>Mô tả:</strong> Xin chào! Tôi là sinh viên năm 3 chuyên ngành CNTT, có niềm đam mê lớn với lập trình Web Front-end và thiết kế giao diện người dùng. Tôi luôn chủ động học hỏi kiến thức mới, rèn luyện tư duy lập trình và chú trọng viết code chuẩn, sạch và tối ưu.</p>
+            <p><strong>Mục tiêu nghề nghiệp:</strong> Trở thành một Web Front-end Developer chuyên nghiệp, thành thạo các công nghệ hiện đại, có khả năng xây dựng các sản phẩm web chuẩn SEO, thân thiện với người dùng và đóng góp hiệu quả vào sự phát triển của dự án.</p>
+        </section>
+
+        <!-- Section 2: Kỹ năng chuyên môn và kỹ năng liên quan -->
+        <section id="ky-nang">
+            <h2>Kỹ năng chuyên môn</h2>
+            <p>Các kiến thức và công nghệ đã được học và ứng dụng trong các bài tập lớn, dự án cá nhân:</p>
+            <ul>
+                <li><strong>Ngôn ngữ lập trình & Nền tảng:</strong> HTML5 (Semantic), CSS3 (Flexbox, Grid, Responsive), JavaScript (ES6+), Python.</li>
+                <li><strong>Thư viện & Framework:</strong> ReactJS (cơ bản), Bootstrap 5, Tailwind CSS.</li>
+                <li><strong>Cơ sở dữ liệu:</strong> MySQL, SQLite, MongoDB (cơ bản).</li>
+                <li><strong>Công cụ & Quản lý mã nguồn:</strong> Git, GitHub, Visual Studio Code, Postman.</li>
+                <li><strong>Kỹ năng mềm:</strong> Khả năng tự nghiên cứu tài liệu tiếng Anh, làm việc nhóm, tư duy giải quyết vấn đề.</li>
+            </ul>
+        </section>
+
+        <!-- Section 3: Các dự án cá nhân và học tập đã thực hiện -->
+        <section id="du-an">
+            <h2>Dự án tiêu biểu</h2>
+
+            <!-- Dự án 1: Thẻ <article> dùng cho nội dung hoàn chỉnh, độc lập -->
+            <article>
+                <h3>1. Website Bán Sách Trực Tuyến (BookStore Web)</h3>
+                <p><strong>Mô tả:</strong> Dự án website thương mại điện tử đơn giản cho phép người dùng xem danh mục sách, tìm kiếm sản phẩm theo tên/thể loại, xem chi tiết và thêm sách vào giỏ hàng.</p>
+                <p><strong>Công nghệ sử dụng:</strong> HTML5 Semantic, CSS3, JavaScript (DOM Manipulation, LocalStorage).</p>
+            </article>
+
+            <!-- Dự án 2 -->
+            <article>
+                <h3>2. Phần Mềm Quản Lý Sinh Viên (Student Manager)</h3>
+                <p><strong>Mô tả:</strong> Ứng dụng desktop hỗ trợ giảng viên/nhà trường quản lý danh sách sinh viên, thực hiện các thao tác thêm, sửa, xóa, tìm kiếm và xuất thống kê điểm tổng kết.</p>
+                <p><strong>Công nghệ sử dụng:</strong> Python, Thư viện giao diện Tkinter, Cơ sở dữ liệu SQLite.</p>
+            </article>
+
+            <!-- Dự án 3 -->
+            <article>
+                <h3>3. Ứng Dụng Tra Cứu Thời Tiết (Weather App)</h3>
+                <p><strong>Mô tả:</strong> Trang web hiển thị tình hình thời tiết thời gian thực tại các địa điểm do người dùng nhập vào (nhiệt độ, độ ẩm, sức gió và trạng thái thời tiết) thông qua API công khai.</p>
+                <p><strong>Công nghệ sử dụng:</strong> HTML5, CSS3, JavaScript ES6 (Fetch API, Async/Await), OpenWeatherMap API.</p>
+            </article>
+        </section>
+
+        <!-- Section 4: Kênh liên hệ và thông tin kết nối -->
+        <section id="lien-he">
+            <h2>Thông tin liên hệ</h2>
+            <p>Tôi luôn mong muốn có cơ hội học hỏi và làm việc trong môi trường thực tế. Vui lòng liên hệ với tôi qua:</p>
+            <!-- Thẻ <address>: Dùng cho thông tin liên hệ của tác giả/chủ sở hữu trang -->
+            <address>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:nguyenvana.it@example.com">nguyenvana.it@example.com</a></li>
+                    <li><strong>Điện thoại:</strong> <a href="tel:0912345678">0912 345 678</a></li>
+                    <li><strong>GitHub:</strong> <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/nguyenvana-dev</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/nguyenvana-it</a></li>
+                </ul>
+            </address>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- THẺ <footer>:                                                             -->
+    <!-- Đại diện cho phần chân trang của tài liệu HTML.                           -->
+    <!-- Chức năng: Chứa thông tin bản quyền, thông tin pháp lý, liên kết phụ      -->
+    <!-- hoặc đường dẫn quay về đầu trang.                                         -->
+    <!-- ========================================================================= -->
+    <footer id="footer">
+        <p>&copy; 2026 Nguyễn Văn A - Sinh viên Công nghệ Thông tin. Mọi quyền được bảo lưu.</p>
+        <p><a href="#header">↑ Về đầu trang</a></p>
+    </footer>
+
+</body>
+</html>
