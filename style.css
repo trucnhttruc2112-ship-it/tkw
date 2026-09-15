@@ -1,0 +1,505 @@
+/* ==========================================================================
+   BỐ CỤC CHÍNH BẰNG CSS GRID VỚI GRID-TEMPLATE-AREAS
+   ========================================================================== */
+
+/* Thiết lập Reset cơ bản */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --sidebar-width: 250px;
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --border-color: #e2e8f0;
+}
+
+/* 
+  1. KHUNG CHỨA GRID (GRID CONTAINER):
+  - display: grid; kích hoạt CSS Grid trên thẻ body
+  - grid-template-columns: Cột 1 cố định 250px (Sidebar), Cột 2 minmax(0, 1fr) chiếm toàn bộ phần còn lại
+  - grid-template-rows: Header và Footer co giãn theo nội dung (auto), Main kéo dài lấp đầy (1fr)
+  - grid-template-areas: Định hình bản đồ bố cục trực quan
+*/
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-body);
+  min-height: 100vh;
+  line-height: 1.6;
+
+  /* CẤU HÌNH CSS GRID */
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+}
+
+/* 
+  2. GÁN TỪNG PHẦN TỬ VÀO VÙNG TƯƠNG ỨNG TRONG GRID (GRID ITEMS):
+*/
+.site-header {
+  grid-area: header;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.sidebar {
+  grid-area: sidebar;
+  width: var(--sidebar-width);
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  padding: 1.75rem 1.25rem;
+}
+
+main {
+  grid-area: main;
+  padding: 2.5rem 3rem;
+  background-color: var(--bg-body);
+}
+
+.site-footer {
+  grid-area: footer;
+  background-color: #0f172a;
+  color: #94a3b8;
+  border-top: 1px solid #1e293b;
+}
+
+/* ==========================================================================
+   CHI TIẾT ĐỊNH DẠNG CÁC THÀNH PHẦN GIAO DIỆN
+   ========================================================================== */
+
+/* --- HEADER & NAVIGATION --- */
+.navigation {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* --- SIDEBAR (THANH BÊN) --- */
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: sticky;
+  top: 90px;
+}
+
+.profile-card {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.avatar-placeholder {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), #ec4899);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.profile-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.profile-title {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.75rem;
+  padding: 4px 10px;
+  background: #ecfdf5;
+  color: #059669;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.widget-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.sidebar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-menu a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-menu a:hover {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
+}
+
+.info-list {
+  list-style: none;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-muted);
+}
+
+.info-list strong {
+  color: var(--text-main);
+}
+
+/* --- NỘI DUNG CHÍNH (MAIN CONTENT) --- */
+.hero {
+  padding: 3rem 0 4rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.eyebrow {
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  line-height: 1.25;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 650px;
+}
+
+.button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #ffffff;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* --- SECTION CHUNG --- */
+.section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-inner {
+  max-width: 1000px;
+}
+
+.section-heading {
+  margin-bottom: 2.5rem;
+}
+
+.section-heading h2 {
+  font-size: 1.85rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.section-heading p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* --- DỰ ÁN (PROJECT CARDS GRID) --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+}
+
+.project-card h3 {
+  font-size: 1.25rem;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.project-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tags li {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-links a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- KỸ NĂNG (SKILL LIST) - BỐ CỤC BẰNG FLEXBOX --- */
+.skill-list {
+  list-style: none;             /* Bỏ dấu chấm đầu dòng mặc định của thẻ ul */
+  padding: 0;
+  margin: 0;
+
+  /* Sử dụng Flexbox cho danh mục Skills */
+  display: flex;
+  flex-direction: row;          /* Hiển thị các item theo dạng hàng ngang */
+  flex-wrap: wrap;              /* Tự động xuống dòng khi thiếu không gian */
+  justify-content: center;      /* Căn giữa các item theo trục chính (ngang) */
+  align-items: center;          /* Căn giữa các item theo trục phụ (dọc) */
+  gap: 15px;                    /* Khoảng cách chuẩn 15px giữa các item (thay thế margin/float cũ) */
+  /* Lưu ý: Đã loại bỏ hoàn toàn các thuộc tính thừa như float: left; hoặc clear: both; */
+}
+
+.skill-list li {
+  /* Mỗi item hiển thị linh hoạt, có thể căn giữa nội dung bên trong */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--text-main, #0f172a);
+  font-size: 0.95rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-list li:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-color, #4f46e5);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.12);
+}
+
+.skill-list li::before {
+  content: '✓';
+  color: var(--primary-color, #4f46e5);
+  font-weight: 800;
+  margin-right: 0.5rem;
+}
+
+/* --- LIÊN HỆ --- */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.contact-links a {
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.contact-links a:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* --- FOOTER --- */
+.footer-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   3. RESPONSIVE DESIGN (MÀN HÌNH NHỎ / DI ĐỘNG)
+   ========================================================================== */
+@media (max-width: 850px) {
+  /* Chuyển Grid thành 1 cột xếp chồng dọc */
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .sidebar-inner {
+    position: static;
+  }
+
+  main {
+    padding: 2rem 1.5rem;
+  }
+
+  .navigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
