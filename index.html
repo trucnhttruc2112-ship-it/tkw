@@ -27,9 +27,16 @@
 			<ul class="nav-links">
 				<li><a href="#gioi-thieu">Giới thiệu</a></li>
 				<li><a href="#du-an">Dự án</a></li>
+				<li><a href="#dich-vu">Dịch vụ</a></li>
 				<li><a href="#ky-nang">Kỹ năng</a></li>
 				<li><a href="#lien-he">Liên hệ</a></li>
 			</ul>
+			<!-- Nút Hamburger cho Mobile -->
+			<button class="hamburger" aria-label="Mở menu" aria-expanded="false">
+				<span class="hamburger-line"></span>
+				<span class="hamburger-line"></span>
+				<span class="hamburger-line"></span>
+			</button>
 		</nav>
 	</header>
 
@@ -51,6 +58,7 @@
 				<ul class="sidebar-menu">
 					<li><a href="#gioi-thieu">Giới thiệu</a></li>
 					<li><a href="#du-an">Dự án tiêu biểu</a></li>
+					<li><a href="#dich-vu">Dịch vụ cung cấp</a></li>
 					<li><a href="#ky-nang">Kỹ năng</a></li>
 					<li><a href="#lien-he">Liên hệ hợp tác</a></li>
 				</ul>
@@ -132,6 +140,41 @@
 		</section>
 
 		<!--
+			SECTION DỊCH VỤ (SERVICES) - Bố cục responsive 4 cột -> 2 cột -> 1 cột
+		-->
+		<section class="section services" id="dich-vu" aria-labelledby="tieu-de-dich-vu">
+			<div class="section-inner">
+				<header class="section-heading">
+					<p class="eyebrow">What I do</p>
+					<h2 id="tieu-de-dich-vu">Dịch vụ cung cấp</h2>
+					<p>Giải pháp trọn gói từ khâu lên ý tưởng thiết kế đến khi triển khai ra sản phẩm thực tế, đảm bảo chất lượng và hiệu năng tốt nhất.</p>
+				</header>
+				<div class="services-grid">
+					<article class="service-card">
+						<div class="service-icon">💻</div>
+						<h3>Phát triển Web</h3>
+						<p>Xây dựng các trang web tương tác cao, tối ưu hóa tốc độ và thân thiện với SEO bằng các công nghệ hiện đại.</p>
+					</article>
+					<article class="service-card">
+						<div class="service-icon">🎨</div>
+						<h3>UI/UX Design</h3>
+						<p>Thiết kế giao diện người dùng tinh tế, tập trung vào trải nghiệm mượt mà và dễ sử dụng trên mọi thiết bị.</p>
+					</article>
+					<article class="service-card">
+						<div class="service-icon">📱</div>
+						<h3>Web App (PWA)</h3>
+						<p>Phát triển các ứng dụng web di động có khả năng hoạt động offline và mang lại trải nghiệm như app native.</p>
+					</article>
+					<article class="service-card">
+						<div class="service-icon">⚡</div>
+						<h3>Tối ưu Hiệu năng</h3>
+						<p>Kiểm tra và cải thiện tốc độ tải trang, nâng cao điểm số Core Web Vitals giúp tăng tỉ lệ chuyển đổi.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!--
 			SECTION kỹ năng trình bày năng lực chuyên môn theo một chủ đề riêng.
 			Heading h2 tạo cấu trúc SEO dễ đọc; danh sách UL là lựa chọn semantic phù hợp
 			vì mỗi kỹ năng là một mục ngang hàng. Văn bản thật thay cho biểu đồ trang trí
@@ -191,5 +234,31 @@
 			</nav>
 		</div>
 	</footer>
+
+	<!-- SCRIPT xử lý Hamburger Menu -->
+	<script>
+		const hamburger = document.querySelector('.hamburger');
+		const navLinks = document.querySelector('.nav-links');
+		
+		hamburger.addEventListener('click', () => {
+			navLinks.classList.toggle('active');
+			hamburger.classList.toggle('active');
+			
+			// Hỗ trợ Accessibility cho trình đọc màn hình
+			const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+			hamburger.setAttribute('aria-expanded', !expanded);
+		});
+
+		// Đóng menu khi click vào link (trên mobile)
+		document.querySelectorAll('.nav-links a').forEach(link => {
+			link.addEventListener('click', () => {
+				if(navLinks.classList.contains('active')) {
+					navLinks.classList.remove('active');
+					hamburger.classList.remove('active');
+					hamburger.setAttribute('aria-expanded', 'false');
+				}
+			});
+		});
+	</script>
 </body>
 </html>
