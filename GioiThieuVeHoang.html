@@ -13,12 +13,26 @@
         <!-- Nav chứa các liên kết điều hướng chính đến những khu vực quan trọng, giúp người dùng và trình đọc màn hình di chuyển dễ dàng. -->
         <nav class="site-navigation" aria-label="Điều hướng chính">
             <a class="site-navigation__brand" href="#trang-chu">Nguyễn Văn Hoàng</a>
-            <ul class="site-navigation__list">
+            <button
+                class="site-navigation__toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="main-menu"
+                aria-label="Mở menu điều hướng"
+            >
+                <span class="site-navigation__toggle-line"></span>
+                <span class="site-navigation__toggle-line"></span>
+                <span class="site-navigation__toggle-line"></span>
+            </button>
+            <ul class="site-navigation__list" id="main-menu">
                 <li class="site-navigation__item">
                     <a class="site-navigation__link" href="#gioi-thieu">Giới thiệu</a>
                 </li>
                 <li class="site-navigation__item">
                     <a class="site-navigation__link" href="#ky-nang">Kỹ năng</a>
+                </li>
+                <li class="site-navigation__item">
+                    <a class="site-navigation__link" href="#dich-vu">Dịch vụ</a>
                 </li>
                 <li class="site-navigation__item">
                     <a class="site-navigation__link" href="#du-an">Dự án</a>
@@ -55,6 +69,51 @@
             </ul>
         </section>
 
+        <!-- Section giới thiệu các dịch vụ chính với lưới responsive theo từng kích thước màn hình. -->
+        <section class="services-section" id="dich-vu" aria-labelledby="services-title">
+            <div class="services-section__header">
+                <p class="services-section__eyebrow">Tôi có thể giúp bạn</p>
+                <h2 class="services-section__title" id="services-title">Dịch vụ</h2>
+                <p class="services-section__description">
+                    Giải pháp giao diện và phát triển web tập trung vào hiệu năng, khả năng sử dụng và trải nghiệm nhất quán.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <span class="service-card__number">01</span>
+                    <h3 class="service-card__title">Thiết kế giao diện</h3>
+                    <p class="service-card__description">
+                        Xây dựng giao diện rõ ràng, hiện đại và phù hợp với nhận diện thương hiệu.
+                    </p>
+                </article>
+
+                <article class="service-card">
+                    <span class="service-card__number">02</span>
+                    <h3 class="service-card__title">Phát triển Frontend</h3>
+                    <p class="service-card__description">
+                        Chuyển thiết kế thành mã HTML, CSS và JavaScript có cấu trúc, dễ bảo trì.
+                    </p>
+                </article>
+
+                <article class="service-card">
+                    <span class="service-card__number">03</span>
+                    <h3 class="service-card__title">Responsive Web</h3>
+                    <p class="service-card__description">
+                        Tối ưu trải nghiệm trên desktop, tablet và mobile với bố cục linh hoạt.
+                    </p>
+                </article>
+
+                <article class="service-card">
+                    <span class="service-card__number">04</span>
+                    <h3 class="service-card__title">Tối ưu trải nghiệm</h3>
+                    <p class="service-card__description">
+                        Cải thiện tốc độ, khả năng tiếp cận và các tương tác quan trọng của sản phẩm.
+                    </p>
+                </article>
+            </div>
+        </section>
+
         <!-- Section tập hợp các dự án cùng một chủ đề; cách nhóm này cung cấp ngữ nghĩa rõ ràng cho SEO và điều hướng bằng trình đọc màn hình. -->
         <section class="projects-section" id="du-an" aria-labelledby="projects-title">
             <h2 class="projects-section__title" id="projects-title">Dự án nổi bật</h2>
@@ -89,7 +148,7 @@
     <footer class="site-footer" id="lien-he">
         <p class="site-footer__copyright">&copy; 2026 Nguyễn Văn Hoàng. Bảo lưu mọi quyền.</p>
         <address class="site-footer__contact">
-            Email: <a class="site-footer__contact-link" href="mailto:hello@example.com">hello@example.com</a>
+            Email: <a class="site-footer__contact-link" href="mailto:ngvanhoang1205@gmail.com">ngvanhoang1205@gmail.com</a>
         </address>
         <ul class="site-footer__social-list" aria-label="Liên kết mạng xã hội">
             <li class="site-footer__social-item">
@@ -100,5 +159,49 @@
             </li>
         </ul>
     </footer>
+
+    <script>
+        // Điều khiển menu hamburger trên màn hình nhỏ bằng JavaScript thuần.
+        const navigationToggle = document.querySelector(".site-navigation__toggle");
+        const navigationMenu = document.querySelector(".site-navigation__list");
+        const navigationLinks = document.querySelectorAll(".site-navigation__link");
+
+        if (navigationToggle && navigationMenu) {
+            const setMenuState = (isOpen) => {
+                navigationToggle.classList.toggle("is-open", isOpen);
+                navigationMenu.classList.toggle("is-open", isOpen);
+                navigationToggle.setAttribute("aria-expanded", String(isOpen));
+                navigationToggle.setAttribute(
+                    "aria-label",
+                    isOpen ? "Đóng menu điều hướng" : "Mở menu điều hướng"
+                );
+            };
+
+            navigationToggle.addEventListener("click", () => {
+                const isOpen = navigationToggle.classList.contains("is-open");
+                setMenuState(!isOpen);
+            });
+
+            // Tự động đóng menu sau khi người dùng chọn một liên kết.
+            navigationLinks.forEach((link) => {
+                link.addEventListener("click", () => setMenuState(false));
+            });
+
+            // Cho phép đóng menu nhanh bằng phím Escape.
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    setMenuState(false);
+                    navigationToggle.focus();
+                }
+            });
+
+            // Dọn trạng thái mobile khi chuyển lại desktop.
+            window.addEventListener("resize", () => {
+                if (window.innerWidth > 768) {
+                    setMenuState(false);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
