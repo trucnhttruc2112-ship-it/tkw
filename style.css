@@ -11,13 +11,30 @@
 
 :root {
   --sidebar-width: 250px;
-  --primary-color: #4f46e5;
-  --primary-hover: #4338ca;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --bg-body: #f8fafc;
-  --bg-surface: #ffffff;
-  --border-color: #e2e8f0;
+  
+  /* BẢNG MÃ MÀU THÔNG MINH (Blue Theme) */
+  --primary: #2563eb;       /* Màu chính (Blue 600 - Xanh dương đậm) */
+  --primary-hover: #1d4ed8; /* Màu chính khi hover (Blue 700) */
+  --secondary: #0ea5e9;     /* Màu phụ (Sky Blue - Xanh da trời) */
+  --accent: #38bdf8;        /* Màu tạo điểm nhấn (Light Sky Blue) */
+  
+  /* Các mức độ màu xám */
+  --gray-100: #f1f5f9;      /* Xám rất nhạt (nền phụ, hover) */
+  --gray-200: #e2e8f0;      /* Xám nhạt (viền) */
+  --gray-300: #cbd5e1;      /* Xám viền khi hover */
+  --gray-400: #94a3b8;      /* Xám chữ footer */
+  --gray-500: #64748b;      /* Xám chữ phụ (muted) */
+  --gray-700: #475569;      /* Xám đậm (chữ trong thẻ tag) */
+  --gray-800: #1e293b;      /* Xám rất đậm (viền footer) */
+  --gray-900: #0f172a;      /* Xám gần đen (chữ chính, nền footer) */
+  
+  /* Màu nền */
+  --bg-color: #ffffff;      /* Nền trắng (surface) */
+  --bg-body: #f8fafc;       /* Nền tổng thể trang */
+  
+  /* Các màu phụ trợ khác */
+  --bg-status: #eff6ff;     /* Nền status (Blue nhạt) */
+  --text-status: #1d4ed8;   /* Chữ status (Blue đậm) */
 }
 
 /* 
@@ -29,7 +46,7 @@
 */
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  color: var(--text-main);
+  color: var(--gray-900);
   background-color: var(--bg-body);
   min-height: 100vh;
   line-height: 1.6;
@@ -49,8 +66,8 @@ body {
 */
 .site-header {
   grid-area: header;
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--gray-200);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -60,8 +77,8 @@ body {
 .sidebar {
   grid-area: sidebar;
   width: var(--sidebar-width);
-  background: var(--bg-surface);
-  border-right: 1px solid var(--border-color);
+  background: var(--bg-color);
+  border-right: 1px solid var(--gray-200);
   padding: 1.75rem 1.25rem;
 }
 
@@ -73,9 +90,9 @@ main {
 
 .site-footer {
   grid-area: footer;
-  background-color: #0f172a;
-  color: #94a3b8;
-  border-top: 1px solid #1e293b;
+  background-color: var(--gray-900);
+  color: var(--gray-400);
+  border-top: 1px solid var(--gray-800);
 }
 
 /* ==========================================================================
@@ -95,7 +112,7 @@ main {
 .logo {
   font-weight: 800;
   font-size: 1.25rem;
-  color: var(--primary-color);
+  color: var(--primary);
   text-decoration: none;
   letter-spacing: 0.05em;
 }
@@ -108,14 +125,14 @@ main {
 
 .nav-links a {
   text-decoration: none;
-  color: var(--text-muted);
+  color: var(--gray-500);
   font-weight: 500;
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 /* --- SIDEBAR (THANH BÊN) --- */
@@ -130,7 +147,7 @@ main {
 .profile-card {
   text-align: center;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .avatar-placeholder {
@@ -138,8 +155,8 @@ main {
   height: 72px;
   margin: 0 auto 1rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color), #ec4899);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,12 +168,12 @@ main {
 .profile-name {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--gray-900);
 }
 
 .profile-title {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--gray-500);
   margin-top: 0.25rem;
 }
 
@@ -166,8 +183,8 @@ main {
   gap: 6px;
   margin-top: 0.75rem;
   padding: 4px 10px;
-  background: #ecfdf5;
-  color: #059669;
+  background: var(--bg-status);
+  color: var(--text-status);
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -177,14 +194,14 @@ main {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: #10b981;
+  background-color: var(--secondary);
 }
 
 .widget-title {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: var(--gray-500);
   margin-bottom: 0.75rem;
   font-weight: 700;
 }
@@ -200,7 +217,7 @@ main {
   display: block;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
-  color: var(--text-main);
+  color: var(--gray-900);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -208,8 +225,8 @@ main {
 }
 
 .sidebar-menu a:hover {
-  background-color: #f1f5f9;
-  color: var(--primary-color);
+  background-color: var(--gray-100);
+  color: var(--primary);
 }
 
 .info-list {
@@ -218,17 +235,17 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  color: var(--text-muted);
+  color: var(--gray-500);
 }
 
 .info-list strong {
-  color: var(--text-main);
+  color: var(--gray-900);
 }
 
 /* --- NỘI DUNG CHÍNH (MAIN CONTENT) --- */
 .hero {
   padding: 3rem 0 4rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .hero-content {
@@ -236,7 +253,7 @@ main {
 }
 
 .eyebrow {
-  color: var(--primary-color);
+  color: var(--primary);
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -247,22 +264,22 @@ main {
 .hero h1 {
   font-size: 2.5rem;
   line-height: 1.25;
-  color: var(--text-main);
+  color: var(--gray-900);
   margin-bottom: 1.25rem;
   letter-spacing: -0.02em;
 }
 
 .hero p {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: var(--gray-500);
   margin-bottom: 2rem;
   max-width: 650px;
 }
 
 .button {
   display: inline-block;
-  background: var(--primary-color);
-  color: #ffffff;
+  background: var(--primary);
+  color: var(--bg-color);
   padding: 0.75rem 1.75rem;
   border-radius: 8px;
   text-decoration: none;
@@ -278,7 +295,7 @@ main {
 /* --- SECTION CHUNG --- */
 .section {
   padding: 4rem 0;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .section-inner {
@@ -291,12 +308,12 @@ main {
 
 .section-heading h2 {
   font-size: 1.85rem;
-  color: var(--text-main);
+  color: var(--gray-900);
   margin-bottom: 0.5rem;
 }
 
 .section-heading p {
-  color: var(--text-muted);
+  color: var(--gray-500);
   font-size: 1.05rem;
 }
 
@@ -308,8 +325,8 @@ main {
 }
 
 .project-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  border: 1px solid var(--gray-200);
   border-radius: 12px;
   padding: 1.75rem;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -317,18 +334,18 @@ main {
 
 .project-card:hover {
   transform: translateY(-4px);
-  border-color: #cbd5e1;
+  border-color: var(--gray-300);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
 }
 
 .project-card h3 {
   font-size: 1.25rem;
-  color: var(--text-main);
+  color: var(--gray-900);
   margin-bottom: 0.75rem;
 }
 
 .project-card p {
-  color: var(--text-muted);
+  color: var(--gray-500);
   font-size: 0.95rem;
   margin-bottom: 1.25rem;
 }
@@ -342,8 +359,8 @@ main {
 }
 
 .tags li {
-  background: #f1f5f9;
-  color: #475569;
+  background: var(--gray-100);
+  color: var(--gray-700);
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -359,7 +376,7 @@ main {
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 .project-links a:hover {
@@ -388,11 +405,11 @@ main {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.25rem;
-  background: var(--bg-surface, #ffffff);
-  border: 1px solid var(--border-color, #e2e8f0);
+  background: var(--bg-color);
+  border: 1px solid var(--gray-200);
   border-radius: 8px;
   font-weight: 600;
-  color: var(--text-main, #0f172a);
+  color: var(--gray-900);
   font-size: 0.95rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -400,13 +417,13 @@ main {
 
 .skill-list li:hover {
   transform: translateY(-2px);
-  border-color: var(--primary-color, #4f46e5);
+  border-color: var(--primary);
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.12);
 }
 
 .skill-list li::before {
   content: '✓';
-  color: var(--primary-color, #4f46e5);
+  color: var(--primary);
   font-weight: 800;
   margin-right: 0.5rem;
 }
@@ -422,17 +439,17 @@ main {
 .contact-links a {
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  border: 1px solid var(--gray-200);
   border-radius: 8px;
-  color: var(--text-main);
+  color: var(--gray-900);
   font-weight: 600;
   transition: all 0.2s ease;
 }
 
 .contact-links a:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
+  border-color: var(--primary);
+  color: var(--primary);
   transform: translateY(-2px);
 }
 
@@ -455,13 +472,13 @@ main {
 }
 
 .footer-links a {
-  color: #94a3b8;
+  color: var(--gray-400);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .footer-links a:hover {
-  color: #ffffff;
+  color: var(--bg-color);
 }
 
 /* ==========================================================================
@@ -482,7 +499,7 @@ main {
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--gray-200);
   }
 
   .sidebar-inner {
